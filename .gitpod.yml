@@ -1,4 +1,4 @@
-image: nixpkgs/nix:nixos-21.11
+image: nixpkgs/nixos:2.5.1
 tasks:
   - name: Install direnv
     command: nix-env -i direnv
