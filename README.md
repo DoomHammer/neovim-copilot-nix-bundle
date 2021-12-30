@@ -35,3 +35,15 @@ Once you're in a Nix shell (either by using `direnv` or `nix-shell`) just type
 projects.
 
 Have an amazing flight!
+
+## GitPod
+
+Also: you can try it in your browser thanks to GitPod!
+
+1. Open https://gitpod.io/#https://github.com/DoomHammer/neovim-copilot-nix-bundle
+2. In the terminal, run `direnv allow`
+3. Wait a moment
+4. In the terminal, run `nvim`
+5. Run `:Copilot setup` in Neovim
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/doomhammer/neovim-copilot-nix-bundle)
