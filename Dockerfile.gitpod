@@ -1,12 +1,3 @@
 FROM ubuntu:focal
 
 RUN apt update && apt install -y curl sudo xz-utils
-RUN useradd -ms /bin/bash gitpod && usermod -aG sudo gitpod
-RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-
-USER gitpod
-ENV USER gitpod
-ENV PATH /home/gitpod/.nix-profile/bin:$PATH
-RUN bash -c 'sh <(curl -L https://nixos.org/nix/install)'
-RUN echo 'if [ -e /home/gitpod/.nix-profile/etc/profile.d/nix.sh ]; then . /home/gitpod/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer' >> /home/gitpod/.bashrc
-RUN nix-env -i direnv
