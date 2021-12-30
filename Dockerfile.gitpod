@@ -12,4 +12,5 @@ ENV PATH /home/gitpod/.nix-profile/bin:$PATH
 RUN bash -c 'sh <(curl -L https://nixos.org/nix/install)'
 RUN echo 'if [ -e /home/gitpod/.nix-profile/etc/profile.d/nix.sh ]; then . /home/gitpod/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer' >> /home/gitpod/.bashrc
 RUN echo 'eval "$(direnv hook bash)"' >> /home/gitpod/.bashrc
+RUN mkdir -p /home/gitpod/.config/nix/ && echo 'sandbox = false' >> /home/gitpod/.config/nix/nix.conf
 RUN nix-env -i direnv
