@@ -1,4 +1,2 @@
-image: nixos/nix:2.5.1
-tasks:
-  - name: Install direnv
-    command: nix-env -i direnv
+image: 
+  file: Dockerfile.gitpod
