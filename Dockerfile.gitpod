@@ -1,3 +1,14 @@
 FROM ubuntu:focal
 
-RUN apt update && apt install -y curl sudo xz-utils
+RUN apt update && apt install -y curl git sudo xz-utils
+
+RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod \
+    # passwordless sudo for users in the 'sudo' group
+    && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
+
+USER gitpod
+ENV USER gitpod
+ENV PATH /home/gitpod/.nix-profile/bin:$PATH
+RUN bash -c 'sh <(curl -L https://nixos.org/nix/install)'
+RUN echo 'if [ -e /home/gitpod/.nix-profile/etc/profile.d/nix.sh ]; then . /home/gitpod/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer' >> /home/gitpod/.bashrc
+RUN nix-env -i direnv
