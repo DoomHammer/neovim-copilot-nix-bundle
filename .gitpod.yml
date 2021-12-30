@@ -1,2 +1,9 @@
 image: 
   file: Dockerfile.gitpod
+tasks:
+  - name: Install Nix
+    command: |
+      curl -L https://nixos.org/nix/install | sh
+      echo 'if [ -e /home/gitpod/.nix-profile/etc/profile.d/nix.sh ]; then . /home/gitpod/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer' >> /home/gitpod/.bashrc
+  - name: Install direnv
+    command: nix-env -i direnv
